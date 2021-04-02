@@ -1,0 +1,41 @@
+
+.container_profile_user{
+    text-align: center;
+}
+.form_profile_user{
+    display: inline-block;
+}
+.form_profile_user textarea{
+    background: rgb(223, 222, 222);
+    opacity: 0.6;
+    border-radius: 20px;
+    outline: none;
+    
+}
+.form_profile_user input{
+    margin-top: 20px;
+    width: 320px;
+    height: 40px;
+    background: rgb(48, 230, 48);
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.form_profile_user input:hover{
+    opacity: 0.6;
+}
+.friends{
+    margin: auto;
+    border: 3px solid black;
+    text-align: center;
+    width: 500px;
+    height: 100%;
+    overflow: auto;
+    text-align: center;
+}
+@media (max-width: 865px){
+    .friends{
+        width: 300px;
+    }
+
+}

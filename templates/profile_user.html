@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title%} Profile {% endblock %}
+</head>
+<body>
+    {% block content%}
+    <div class="container_profile_user">
+        <div class="topcolor"></div>
+        <h1 style="margin-top: 200px; display: inline-block;">{{name}}</h1>
+        <h2 style="margin-top: 15px; margin-bottom: 15px;">Description</h2>
+        <form action="" method="POST" class="form_profile_user">
+            <textarea name="desc_text" maxlength="500" style="padding: 10px; width: 300px; height: 150px; resize: none;"></textarea><br>
+            <input type="submit" value="Update">
+        </form>
+        <h2 style="margin-top: 15px; margin-bottom: 15px;">Friends</h2>
+        <div class="friends">
+            <p style="font-weight: bold;">Your Friends:</p>
+            
+        </div>
+    </div>
+    {% endblock %}
+    
+</body>
+</html>

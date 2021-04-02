@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="{{url_for('static', filename='img/waterylogo.png')}}"/>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/profile_user.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/profile_view.css')}}">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            font-size: 25px;
+        }
+        #links{
+            text-align: center;
+            margin-bottom: 10px;
+            display: none;
+        }
+        li{
+            margin-top: 10px;
+            padding: 5px;
+            transition: 0.5s;
+        }
+        #button{
+            width: 80px;
+            height: 80px;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-right: 20px;
+            float: right;
+            background-image: url("/static/img/menu.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+        .navbar{
+            width: 100%;
+            position: fixed;
+            border-bottom: 2px solid black;
+            background-color: white;
+        }
+        li:hover{
+            background-color: rgb(199, 198, 198);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="{{url_for('static', filename='img/waterylogo.png')}}" alt="logo" style="width: 100px; height: 100px; margin-right: 20px;">
+        <div id="button"></div>
+        <ul id="links">
+            <input id="search" type="search" name="search" placeholder="Search Name...">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/profile/{{view_name}}">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script>
+        let isItOpen = 0;
+        
+        document.getElementById("button").onclick = function(){
+            if(isItOpen === 0){
+                gsap.to("#button", {duration: .5, rotation: 90});
+                document.getElementById("links").style.display = "block";
+                isItOpen++;
+            }else{
+                gsap.to("#button", {duration: .5, rotation: 0});
+                document.getElementById("links").style.display = "none";
+                isItOpen--;
+
+            }
+        }
+        document.getElementById("search").addEventListener('keypress', function(e){
+            if(e.key === "Enter"){
+                var name = e.target.value;
+                var link = "/profile/"+ name;
+                window.location.replace(link);
+                
+                
+            }
+        })
+        
+        
+    </script>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

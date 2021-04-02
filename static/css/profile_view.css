@@ -1,0 +1,18 @@
+.container_profile_view {
+  text-align: center;
+}
+
+.form_profile_view input {
+  margin-top: 20px;
+  width: 320px;
+  height: 40px;
+  background: #558aeb;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.form_profile_view input:hover {
+  opacity: 0.6;
+}
+/*# sourceMappingURL=profile_view.css.map */
