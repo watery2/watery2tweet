@@ -47,24 +47,27 @@ def register():
         password = request.form["password"]
         user = User.query.filter_by(name=name).first()
         if name != "" and password != "":
-            try:
-                if name == user.name:
-                    flash("Password or Username is being used ccc")
-            except AttributeError:
+            if "`" in name or '`' in password or "'" in name or "'" in password or "\"" in name or "\"" in password:
+                flash("ERROR")
+            else:
                 try:
-                    if password == user.password:
-                        flash("Password or Username is being used xxx")
-                except AttributeError:  
-            #else:
+                    if name == user.name:
+                        flash("Password or Username is being used")
+                except AttributeError:
                     try:
-                        add_user = User(name=name, password=password, desc=" ",friends=[])
-                        db.session.add(add_user)
-                        db.session.commit()
-                        session["name"] = name
-                        session["password"] = password
-                        return redirect(url_for("home", usr=name))
-                    except IntegrityError:
-                        flash("Password or Username is being used zzz")
+                        if password == user.password:
+                            flash("Password or Username is being used")
+                    except AttributeError:  
+                #else:
+                        try:
+                            add_user = User(name=name, password=password, desc=" ",friends=[])
+                            db.session.add(add_user)
+                            db.session.commit()
+                            session["name"] = name
+                            session["password"] = password
+                            return redirect(url_for("home", usr=name))
+                        except IntegrityError:
+                            flash("Password or Username is being used")
         else:
             flash("Enter Something")
     return render_template("register.html")
