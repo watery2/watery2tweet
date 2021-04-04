@@ -80,12 +80,17 @@ def home(usr):
         try:
             user = User.query.filter_by(name=usr).first()
             user_name = user.name
+            descrip = user.desc
             if view_name == user_name:
                 name = session["name"]
-                password = session["password"]
-                return render_template("profile_user.html", name=name, password=password, view_name=view_name)
+                if request.method == "POST":
+                    description = request.form["desc_text"]
+                    user.desc = description
+                    db.session.commit()
+                    return redirect(url_for("home", usr=name))
+                return render_template("profile_user.html", name=name, view_name=view_name, desc=descrip)
             else:
-                return render_template("profile_view.html", name=user_name, view_name=view_name)
+                return render_template("profile_view.html", name=user_name, view_name=view_name, desc=descrip)
         except AttributeError:
             return render_template("404.html")
     else:
