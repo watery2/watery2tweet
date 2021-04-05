@@ -20,8 +20,19 @@
         <h2 style="margin-top: 15px; margin-bottom: 15px;">Friends</h2>
         <div class="friends">
             <p style="font-weight: bold;">Your Friends:</p>
+            {% for i in friend %}
+                <a href="/profile/{{i}}">{{i}}</a><br>
+            {% endfor %}
             
         </div>
+        <div class="friends" style="margin-top:15px;">
+            <p style="font-weight: bold;">People Who Friended You:</p>
+            {% for i in pfriend %}
+                <a href="/profile/{{i}}">{{i}}</a><br>
+            {% endfor %}
+        </div>
+        
+
     </div>
     {% endblock %}
     
