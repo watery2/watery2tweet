@@ -3,6 +3,12 @@
 }
 
 .form_profile_user {
+  background: white;
+  padding: 15px;
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-top: 200px;
+  margin-bottom: 30px;
   display: inline-block;
 }
 
@@ -20,25 +26,44 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .form_profile_user input:hover {
-  opacity: 0.6;
+  background: #81f781;
 }
 
 .friends {
   margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: 3px solid black;
   text-align: center;
   width: 500px;
   height: 100%;
-  overflow: auto;
   text-align: center;
+  overflow-wrap: break-word;
+}
+
+.friend_list {
+  margin: auto;
+  background: white;
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 520px;
+  padding: 10px;
 }
 
 @media (max-width: 865px) {
+  .friend_list {
+    width: 310px;
+  }
   .friends {
     width: 300px;
+  }
+  .form_profile_user input {
+    width: 280px;
   }
 }
 /*# sourceMappingURL=profile_user.css.map */

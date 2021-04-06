@@ -1,6 +1,15 @@
 .container_profile_view{
     text-align: center;
 }
+.profile_view{
+    margin: auto;
+    background: white;
+    padding: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top: 200px;
+    margin-bottom: 30px;
+    display: inline-block;
+}
 .form_profile_view input{
     margin-top: 20px;
     width: 320px;
@@ -9,7 +18,14 @@
     border: none;
     font-size: 20px;
     cursor: pointer;
+    transition: 0.5s;
 }
 .form_profile_view input:hover{
-    opacity: 0.6;
+    background: rgb(129, 138, 235);
+}
+@media (max-width: 865px){
+    .profile_view input{
+        width: 280px;
+    }
+
 }

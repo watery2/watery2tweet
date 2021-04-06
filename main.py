@@ -1,6 +1,8 @@
 from datetime import datetime
-from flask import Flask, session, redirect, url_for, render_template, request, flash
+from flask import Flask, session, redirect, url_for, render_template, request, flash, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
+import time
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -79,6 +81,7 @@ def register():
 def login_redirect():
     return redirect(url_for("login"))
 
+# The profile is named home cause i'm in too deep to change it 
 @app.route("/profile/<usr>", methods=['GET', 'POST'])
 def home(usr):
     if "name" in session:
@@ -159,6 +162,14 @@ def logout():
         return redirect(url_for("login"))
     else:
         return redirect(url_for("login"))
+@app.route("/home")
+def post():
+    if "name" in session:
+        name = session["name"]
+        return render_template("home.html", view_name=name)
+    else:
+        return redirect(url_for("login"))
+ 
 @app.route("/test")
 def test():
     users = User.query.all()

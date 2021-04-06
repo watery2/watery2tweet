@@ -1,0 +1,83 @@
+
+.container_home{
+    text-align: center;
+}
+.form_div{
+    margin-top: 150px;
+    display: inline-block;
+    text-align: center;
+    background: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 400px;
+}
+.form_div button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 320px;
+    height: 40px;
+    background: rgb(85, 138, 235);
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.form_div button:hover{
+    background: rgb(129, 138, 235);
+}
+.form_div input{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 320px;
+    height: 40px;
+    background: rgb(48, 230, 48);
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.form_div input:hover{
+    background: rgb(129, 247, 129);
+}
+.form_div form textarea{
+    background: rgb(223, 222, 222);
+    border-radius: 20px;
+    outline: none;
+    padding: 10px;
+    width: 270px; 
+    height: 150px; 
+    resize: none;
+}
+.form_div form{
+    margin: auto;
+    display: none;
+}
+.form_div form input{
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.hunposts{
+    margin: auto;
+    margin-top: 50px;
+    overflow-wrap: break-word;
+    padding: 10px;
+    background: white;
+    width: 350px;
+    height: 200px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+@media(max-width: 865px){
+    .hunposts{
+        width: 300px;
+    }
+    .form_div{
+        width: 310px;
+        
+        input{
+            width: 280px;
+        }
+        button{
+            width: 280px;
+        }
+    }
+}
