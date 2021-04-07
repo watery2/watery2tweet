@@ -3,7 +3,7 @@
 }
 
 .form_div {
-  margin-top: 150px;
+  margin-top: 400px;
   display: inline-block;
   text-align: center;
   background: white;
@@ -43,7 +43,7 @@
 }
 
 .form_div input:hover {
-  background: #81f781;
+  background: #63d463;
 }
 
 .form_div form textarea {
@@ -69,7 +69,7 @@
 
 .hunposts {
   margin: auto;
-  margin-top: 50px;
+  margin-bottom: 50px;
   overflow-wrap: break-word;
   padding: 10px;
   background: white;

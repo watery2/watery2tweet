@@ -18,7 +18,7 @@
                 <input type="submit" value={{friend_or}}>
             </form>
         </div>
-        <div class="friend_list">
+        <div class="friend_list" style="margin-bottom: 280px;">
             <div class="friends">
                 <p style="font-weight: bold; margin-top: 10px; margin-bottom: 10px;">Friends:</p>
                 {% for i in friend %}
@@ -26,7 +26,43 @@
                 {% endfor %}
             </div>
         </div>
+        {% for i in posts %}
+            <div class="hunposts" style="visibility: hidden; display: none;">
+                <div style="margin-bottom: 10px;"><p class="name-guy" style="visibility: hidden; display: none;">{{name}}</p></div>   
+                <div><p class="posts" style="visibility: hidden; display: none;">{{i}}</p></div>
+            </div>
+        {% endfor %}
+        <hr class="line">
     </div>
+    <script>
+        let post = document.getElementsByClassName("hunposts");
+        let names = document.getElementsByClassName("name-guy");
+        let posts = document.getElementsByClassName("posts");
+        let line = document.getElementsByClassName("line");
+        let num
+        let num2
+        let num3
+        let num4
+        console.log(post.length) 
+        window.addEventListener("scroll", function(){
+            console.log(window.innerHeight)
+            console.log(line[0].getBoundingClientRect().top);
+           for(let i=0; i<post.length; i++){
+               num = post[i]
+               num2 = line[0]
+               num3 = names[i]
+               num4 = posts[i]
+               if(num2.getBoundingClientRect().top < window.innerHeight){
+                   num.style.visibility = "visible"
+                   num.style.display = "block"
+                   num3.style.visibility = "visible"
+                   num3.style.display = "block"
+                   num4.style.visibility = "visible"
+                   num4.style.display = "block"   
+               } 
+           }
+        })
+    </script>
     {% endblock %}
     
 </body>

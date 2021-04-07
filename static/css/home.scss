@@ -3,7 +3,7 @@
     text-align: center;
 }
 .form_div{
-    margin-top: 150px;
+    margin-top: 400px;
     display: inline-block;
     text-align: center;
     background: white;
@@ -36,7 +36,7 @@
     transition: 0.5s;
 }
 .form_div input:hover{
-    background: rgb(129, 247, 129);
+    background: rgb(99, 212, 99);
 }
 .form_div form textarea{
     background: rgb(223, 222, 222);
@@ -58,7 +58,8 @@
 }
 .hunposts{
     margin: auto;
-    margin-top: 50px;
+    //margin-top: 50px;
+    margin-bottom: 50px;
     overflow-wrap: break-word;
     padding: 10px;
     background: white;
