@@ -3,6 +3,7 @@ from flask import Flask, session, redirect, url_for, render_template, request, f
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
+import time
 import random
 
 
@@ -227,30 +228,52 @@ def post():
         
         posts_all = Posts.query.all()
         names_list = []
-        posts_list = []
         try:
             for i in posts_all:
                 names_list.append(i.name)
-                posts_list.append(i.post)
         except AttributeError:
             pass
-        
-        zip_list = list(zip(names_list,posts_list))
-        random.shuffle(zip_list)
-        try:
-            names_list, posts_list = zip(*zip_list)
-        except ValueError:
-            pass
 
-        if len(names_list) > 200 and len(posts_list) > 200:
-            names_list = names_list[0:201]
-            posts_list = posts_list[0:201]
-        lens = len(names_list)
-        names_and_posts = zip(names_list, posts_list)
-        return render_template("home.html", view_name=name,info=names_and_posts)
+        leng = len(names_list) - 1
+
+        return render_template("home.html", view_name=name,len=leng)
     else:
         return redirect(url_for("login"))
-   
+
+@app.route("/load", methods=['POST'])
+def load():
+
+    posts_all = Posts.query.all()
+    names_list = []
+    posts_list = []
+    try:
+        for i in posts_all:
+            names_list.append(i.name)
+            posts_list.append(i.post)
+    except AttributeError:
+        pass
+
+    if request.args:
+        num = int(request.args.get("n"))
+
+        if num != len(names_list):
+            print("sending")
+            
+            response = {
+                "name": names_list[num],
+                "post": posts_list[num]
+            }
+
+            res = make_response(jsonify(response), 200)
+
+            return res
+        return "nothing left"
+    return "Hello"
+
+
+
+    
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)

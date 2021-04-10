@@ -19,43 +19,48 @@
                 <input type="submit" value="Submit">
             </form>
         </div>
-        {% for i,j in info %}
-            <div class="hunposts" style="visibility: hidden; display: none;">
-                <div style="margin-bottom: 10px;"><a href="/profile/{{i}}" class="name-guy" style="visibility: hidden; display: none;">{{i}}</a></div>   
-                <div><p class="posts" style="visibility: hidden; display: none;">{{j}}</p></div>
-            </div>
-        {% endfor %}
+        <div class="container-post">
+            <template>
+                <div class="hunposts" >
+                    <div style="margin-bottom: 10px;"><a href="/profile/{{i}}" class="name-guy"></a></div>   
+                    <div><p class="posts"></p></div>
+                </div>
+            </template>
+        </div>
         <button class="ref" onclick="Refresh()" style="display:block; margin: auto;">Refresh</button>
 
     </div>
     <script>
+        let template = document.getElementsByTagName("template")[0];
+        let container = document.getElementsByClassName("container-post")[0];
         let post = document.getElementsByClassName("hunposts");
         let names = document.getElementsByClassName("name-guy");
         let posts = document.getElementsByClassName("posts");
         let ref = document.getElementsByClassName("ref");
-        let num
-        let num2
-        let num3
-        let num4
-        console.log(post.length) 
+        let num = 0;
+        let max_lenght = '{{len}}';
+        max_lenght = parseInt(max_lenght)
+        console.log(max_lenght)
         window.addEventListener("scroll", function(){
-            console.log(window.innerHeight)
-            console.log(ref[0].getBoundingClientRect().top);
-           for(let i=0; i<post.length; i++){
-               num = post[i]
-               num2 = ref[0]
-               num3 = names[i]
-               num4 = posts[i]
-               if(num2.getBoundingClientRect().top < window.innerHeight){
-                   num.style.visibility = "visible"
-                   num.style.display = "block"
-                   num3.style.visibility = "visible"
-                   num3.style.display = "block"
-                   num4.style.visibility = "visible"
-                   num4.style.display = "block"
-                   
-               } 
-           }
+            if(ref[0].getBoundingClientRect().top < window.innerHeight){
+                if(num <= max_lenght){
+                    console.log(num)
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('POST', `/load?n=${num}`);
+                    xhr.onload = function(){
+                        const data = JSON.parse(xhr.response);
+                        console.log(data)
+                        let template_clone = template.content.cloneNode(true);
+                        template_clone.querySelector(".name-guy").innerHTML = data.name;
+                        template_clone.querySelector(".posts").innerHTML = data.post;
+                        container.appendChild(template_clone);
+
+                    }
+                    num += 1;
+                    xhr.send()
+                }   
+               
+            }
             
             
         })
