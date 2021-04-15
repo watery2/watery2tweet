@@ -22,7 +22,7 @@
         <div class="container-post">
             <template>
                 <div class="hunposts" >
-                    <div style="margin-bottom: 10px;"><a href="/profile/{{i}}" class="name-guy"></a></div>   
+                    <div style="margin-bottom: 10px;"><a href="#" class="name-guy"></a></div>   
                     <div><p class="posts"></p></div>
                 </div>
             </template>
@@ -52,6 +52,7 @@
                         console.log(data)
                         let template_clone = template.content.cloneNode(true);
                         template_clone.querySelector(".name-guy").innerHTML = data.name;
+                        template_clone.querySelector(".name-guy").href = `/profile/${data.name}`
                         template_clone.querySelector(".posts").innerHTML = data.post;
                         container.appendChild(template_clone);
 
